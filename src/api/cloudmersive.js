@@ -1,4 +1,4 @@
-const { CLOUDMERSIVE_API_KEY } = process.env
+const { REACT_APP_API_KEY } = process.env
 
 const API_BASE_URL = ' https://api.cloudmersive.com/'
 
@@ -10,9 +10,9 @@ const objectToQueryParams = params =>
     .join('&')
 
 export const fetchCaptionEndpoint = (endpoint, params, options = {}) =>
-  fetch(``, {
+  fetch(`${API_BASE_URL}${endpoint}${objectToQueryParams(params)}`, {
     ...options,
     headers: {
-      Authorization: ``
+      Authorization: `Token ${REACT_APP_API_KEY}`
     }
   }).then(res => res.json())

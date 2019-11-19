@@ -7,34 +7,36 @@ import './App.css'
 // Heading
 // AppHeader
 // TextWindow
-// FormContainer
-// ImageUploader
+import ImageUploader from './components/ImageUploader/ImageUploader'
 // ConfidenceRater
 // CaptionBox
 // ResetButton
 // CopyButton
 // ProgressBar
 
-function App () {
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1>Image Caption App</h1>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
+class App extends Component {
+  constructor () {
+    super()
+    this.state = {}
+  }
+  fetchData (query, random) {
+  }
+  setQuery () {
+
+  }
+  componentDidMount () {
+
+  }
+  render () {
+    return (
+      <div className='App'>
+        <header>
+          <h1>Image Caption App</h1>
+        </header>
+        <ImageUploader />
+      </div>
+    )
+  }
 }
 
 export default App
