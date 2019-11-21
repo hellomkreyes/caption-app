@@ -5,7 +5,6 @@ class ImageUploader extends Component {
   constructor (props) {
     super()
     this.state = {
-      file: '',
       imagePreviewURL: ''
     }
 
@@ -14,8 +13,15 @@ class ImageUploader extends Component {
   }
   handleSubmit (e) {
     e.preventDefault()
-    // grab this.state.file
-    // submit to Cloudmersive API
+
+    // pass image file into parent
+    // parent will do all logic for API call
+    const data = new FormData(e.target)
+    // for (let [key, value] of data.entries()) {
+    //   if (key === 'imageFile') this.props.getImageFile(value)
+    // }
+
+    this.props.getFormData(data)
   }
   handleImageChange (e) {
     e.preventDefault()
@@ -23,10 +29,7 @@ class ImageUploader extends Component {
     let file = e.target.files[0]
 
     reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewURL: reader.result
-      })
+      this.setState({ imagePreviewURL: reader.result })
     }
 
     reader.readAsDataURL(file)
@@ -44,8 +47,13 @@ class ImageUploader extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type='file' onChange={this.handleImageChange} />
-          <button type='submit' onClick={this.handleSubmit}>Generate Caption!</button>
+          <label htmlFor='imageFile'>File Upload</label>
+          <input type='file'
+            id='imageFile'
+            name='imageFile'
+            onChange={this.handleImageChange}
+          />
+          <button type='submit'>Generate Caption!</button>
         </form>
         { $imagePreview }
       </div>
