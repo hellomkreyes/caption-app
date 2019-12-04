@@ -1,8 +1,10 @@
+.imageUploader {}
+
 .imageContainer {
   max-width: 1000px;
   margin: 0 auto;
-}
 
-.imageContainer img {
-  width: 100%;
+  img {
+    width: 100%;
+  }
 }
