@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { fetchCaptionEndpoint } from './api/cloudmersive.js'
-import logo from './logo.svg'
-import './App.css'
+import { fetchCaptionEndpoint } from '../api/cloudmersive.js'
+// import './App.css'
+import styles from './App.module.scss'
 
 // Custom Components
 // Heading
 // AppHeader
 // TextWindow
-import ImageUploader from './components/ImageUploader/ImageUploader'
+import ImageUploader from '../common/components/ImageUploader/ImageUploader'
 // ConfidenceRater
 // CaptionBox
 // ResetButton
@@ -29,12 +29,17 @@ class App extends Component {
   }
   render () {
     return (
-      <div className='App'>
+      <main className={styles.App}>
         <header>
           <h1>Image Caption App</h1>
         </header>
+
         <ImageUploader />
-      </div>
+
+        <footer>
+          <span>Created by M.K. Reyes | &copy; 2019</span>
+        </footer>
+      </main>
     )
   }
 }
