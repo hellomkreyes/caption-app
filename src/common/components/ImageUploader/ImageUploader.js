@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import './ImageUploader.css'
+
+import styles from './ImageUploader.module.scss'
 
 class ImageUploader extends Component {
   constructor (props) {
@@ -36,19 +37,19 @@ class ImageUploader extends Component {
     let $imagePreview
 
     if (imagePreviewURL) {
-      $imagePreview = (<div className='imageContainer'>
+      $imagePreview = (<div className={styles.imageContainer}>
         <img src={imagePreviewURL} alt='' />
       </div>)
     }
 
     return (
-      <div>
+      <>
         <form onSubmit={this.handleSubmit}>
           <input type='file' onChange={this.handleImageChange} />
           <button type='submit' onClick={this.handleSubmit}>Generate Caption!</button>
         </form>
         { $imagePreview }
-      </div>
+      </>
     )
   }
 }
