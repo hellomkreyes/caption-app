@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { fetchCaptionEndpoint } from '../common/api/cloudmersive.js'
 
 import styles from './App.module.scss'
 
@@ -16,42 +15,17 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      file: '',
-      formResponse: '',
-      endpoint: 'image/recognize/describe'
+      firstCaption: {},
+      secondCaption: {}
     }
 
-    this.getImageFile = this.getImageFile.bind(this)
-    this.getFormData = this.getFormData.bind(this)
-    this.fetchData = this.fetchData.bind(this)
-    this.setQuery = this.setQuery.bind(this)
+    this.getResponse = this.getResponse.bind(this)
   }
-  getImageFile (file) {
-    this.setState({ file })
-  }
-  getFormData (formResponse) {
-    this.setState({ formResponse })
-  }
-  fetchData (imageFile) {
-    fetchCaptionEndpoint(this.state.endpoint, {
-      imageFile: imageFile,
-      method: 'POST',
-      mode: 'no-cors'
-    }).then(data => {
-      console.log(data)
-    })
-  }
-  setQuery () {
-    console.log('compile api query')
-    // this.fetchData(this.state.file)
+  getResponse (obj) {
+    this.setState({ firstCaption: obj.BestOutcome })
+    this.setState({ secondCaption: obj.RunnerUpOutcome })
   }
   componentDidMount () {
-    console.log('mounted')
-  }
-  componentDidUpdate (prevProps, prevState, snapshot) {
-    console.log('updated')
-    if (prevState.file !== this.state.file) this.setQuery()
-    if (prevState.formResponse !== this.state.formResponse) this.setQuery()
   }
   render () {
     return (
@@ -62,12 +36,11 @@ class App extends Component {
 
         <div className='grid'>
           <div className='column'>
-            <ImageUploader
-              getImageFile={this.getImageFile}
-              getFormData={this.getFormData}
-            />
+            <ImageUploader getResponse={this.getResponse} />
           </div>
-          <div className='column'></div>
+          <div className='column'>
+            
+          </div>
         </div>
 
         <footer>

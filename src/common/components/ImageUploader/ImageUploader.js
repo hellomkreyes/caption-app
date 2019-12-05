@@ -1,39 +1,60 @@
+/* globals cloudmersiveImageApiClient */
+
 import React, { Component } from 'react'
 
 import styles from './ImageUploader.module.scss'
 
+const { REACT_APP_API_KEY } = process.env
+const apiClient = cloudmersiveImageApiClient.ApiClient.instance
+const Apikey = apiClient.authentications['Apikey']
+
 class ImageUploader extends Component {
   constructor (props) {
-    super()
+    super(props)
     this.state = {
-      imagePreviewURL: ''
+      imagePreviewURL: '',
+      rawFile: ''
     }
 
     this.handleImageChange = this.handleImageChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.postImageToApi = this.postImageToApi.bind(this)
+  }
+  postImageToApi () {
+    let currentComponent = this;
+    Apikey.apiKey = REACT_APP_API_KEY
+    const api = new cloudmersiveImageApiClient.RecognizeApi()
+    const { rawFile } = currentComponent.state
+    const { getResponse } = currentComponent.props
+
+    const callback = function (error, data, res) {
+      if (error) {
+        console.error(error, res)
+      } else {
+        console.log('API called successfully.')
+        getResponse(res.body)
+      }
+    }
+
+    api.recognizeDescribe(rawFile, callback)
   }
   handleSubmit (e) {
     e.preventDefault()
-
-    // pass image file into parent
-    // parent will do all logic for API call
-    const data = new FormData(e.target)
-    // for (let [key, value] of data.entries()) {
-    //   if (key === 'imageFile') this.props.getImageFile(value)
-    // }
-
-    this.props.getFormData(data)
+    this.postImageToApi()
   }
   handleImageChange (e) {
     e.preventDefault()
     let reader = new FileReader()
-    let file = e.target.files[0]
+    let rawFile = e.target.files[0]
 
     reader.onloadend = () => {
-      this.setState({ imagePreviewURL: reader.result })
+      this.setState({
+        rawFile,
+        imagePreviewURL: reader.result
+      })
     }
 
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(rawFile)
   }
   render () {
     let { imagePreviewURL } = this.state
@@ -56,6 +77,7 @@ class ImageUploader extends Component {
           />
           <button type='submit'>Generate Caption!</button>
         </form>
+
         { $imagePreview }
       </>
     )
