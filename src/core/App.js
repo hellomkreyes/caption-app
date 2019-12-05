@@ -5,8 +5,6 @@ import styles from './App.module.scss'
 
 // Custom Components
 // Heading
-// AppHeader
-// TextWindow
 import ImageUploader from '../common/components/ImageUploader/ImageUploader'
 // ConfidenceRater
 // CaptionBox
@@ -17,24 +15,18 @@ import ImageUploader from '../common/components/ImageUploader/ImageUploader'
 class App extends Component {
   constructor () {
     super()
-    this.state = {}
+    this.state = {
+      firstCaption: {},
+      secondCaption: {}
+    }
+
+    this.getResponse = this.getResponse.bind(this)
   }
-  fetchData (imageFile) {
-    // fetchCaptionEndpoint(this.state.endpoint, {
-    //   imageFile: imageFile,
-    //   method: 'POST',
-    //   mode: 'no-cors'
-    // }).then(data => {
-    //   console.log(data)
-    // })
-  }
-  setQuery () {
-    console.log('compile api query')
-    console.log(this.state.file)
-    // this.fetchData(this.state.file)
+  getResponse (obj) {
+    this.setState({ firstCaption: obj.BestOutcome })
+    this.setState({ secondCaption: obj.RunnerUpOutcome })
   }
   componentDidMount () {
-
   }
   render () {
     return (
@@ -43,7 +35,7 @@ class App extends Component {
           <h1>Image Caption App</h1>
         </header>
 
-        <ImageUploader />
+        <ImageUploader getResponse={this.getResponse} />
 
         <footer>
           <span>Created by M.K. Reyes | &copy; 2019</span>
