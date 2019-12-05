@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { fetchCaptionEndpoint } from '../common/api/apiRequest.js'
 
 import styles from './App.module.scss'
 
