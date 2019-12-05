@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { fetchCaptionEndpoint } from '../api/cloudmersive.js'
-// import './App.css'
+// import { fetchCaptionEndpoint } from '../common/api/apiRequest.js'
+
 import styles from './App.module.scss'
 
 // Custom Components
@@ -19,10 +19,19 @@ class App extends Component {
     super()
     this.state = {}
   }
-  fetchData (query, random) {
+  fetchData (imageFile) {
+    // fetchCaptionEndpoint(this.state.endpoint, {
+    //   imageFile: imageFile,
+    //   method: 'POST',
+    //   mode: 'no-cors'
+    // }).then(data => {
+    //   console.log(data)
+    // })
   }
   setQuery () {
-
+    console.log('compile api query')
+    console.log(this.state.file)
+    // this.fetchData(this.state.file)
   }
   componentDidMount () {
 
