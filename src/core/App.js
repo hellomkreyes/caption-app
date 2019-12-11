@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import styles from './App.module.scss'
 
 // Custom Components
-import { Heading } from '../common/components/Heading/Heading'
+import { Heading } from '../common/components'
 import ImageUploader from '../common/components/ImageUploader/ImageUploader'
 // ConfidenceRater (from the API - confidence % of AI & the caption it generated)
 // CaptionBox (caption input text field)
