@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import { fetchCaptionEndpoint } from '../api/cloudmersive.js'
-// import './App.css'
+
 import styles from './App.module.scss'
 
 // Custom Components
 // Heading
-// AppHeader
-// TextWindow
 import ImageUploader from '../common/components/ImageUploader/ImageUploader'
 // ConfidenceRater
 // CaptionBox
@@ -15,26 +12,27 @@ import ImageUploader from '../common/components/ImageUploader/ImageUploader'
 // ProgressBar
 
 class App extends Component {
-  constructor () {
-    super()
-    this.state = {}
+  state = {
+    title: 'Image Caption App',
+    firstCaption: {},
+    secondCaption: {}
   }
-  fetchData (query, random) {
-  }
-  setQuery () {
 
+  getResponse = (obj) => {
+    this.setState({
+      firstCaption: obj.BestOutcome,
+      secondCaption: obj.RunnerUpOutcome
+    })
   }
-  componentDidMount () {
 
-  }
-  render () {
+  render() {
     return (
       <main className={styles.App}>
         <header>
-          <h1>Image Caption App</h1>
+          <h1>{this.state.title}</h1>
         </header>
 
-        <ImageUploader />
+        <ImageUploader getResponse={this.getResponse} />
 
         <footer>
           <span>Created by M.K. Reyes | &copy; 2019</span>

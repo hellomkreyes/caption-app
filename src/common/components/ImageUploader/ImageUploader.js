@@ -1,38 +1,58 @@
+/* globals cloudmersiveImageApiClient */
+
 import React, { Component } from 'react'
 
 import styles from './ImageUploader.module.scss'
 
+const { REACT_APP_API_KEY } = process.env
+const apiClient = cloudmersiveImageApiClient.ApiClient.instance
+const Apikey = apiClient.authentications['Apikey']
+
 class ImageUploader extends Component {
-  constructor (props) {
-    super()
-    this.state = {
-      file: '',
-      imagePreviewURL: ''
+  state = {
+    imagePreviewURL: '',
+    rawFile: ''
+  }
+
+  postImageToApi = () => {
+    Apikey.apiKey = REACT_APP_API_KEY
+    const api = new cloudmersiveImageApiClient.RecognizeApi()
+    const { rawFile } = this.state
+    const { getResponse } = this.props
+
+    const callback = function (error, data, res) {
+      if (error) {
+        console.error(error, res)
+      } else {
+        console.log('API called successfully.')
+        getResponse(res.body)
+      }
     }
 
-    this.handleImageChange = this.handleImageChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    api.recognizeDescribe(rawFile, callback)
   }
-  handleSubmit (e) {
+
+  handleSubmit = e => {
     e.preventDefault()
-    // grab this.state.file
-    // submit to Cloudmersive API
+    this.postImageToApi()
   }
-  handleImageChange (e) {
+
+  handleImageChange = e => {
     e.preventDefault()
     let reader = new FileReader()
-    let file = e.target.files[0]
+    let rawFile = e.target.files[0]
 
     reader.onloadend = () => {
       this.setState({
-        file: file,
+        rawFile,
         imagePreviewURL: reader.result
       })
     }
 
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(rawFile)
   }
-  render () {
+
+  render() {
     let { imagePreviewURL } = this.state
     let $imagePreview
 
@@ -48,6 +68,7 @@ class ImageUploader extends Component {
           <input type='file' onChange={this.handleImageChange} />
           <button type='submit' onClick={this.handleSubmit}>Generate Caption!</button>
         </form>
+
         { $imagePreview }
       </>
     )
