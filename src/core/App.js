@@ -12,26 +12,24 @@ import ImageUploader from '../common/components/ImageUploader/ImageUploader'
 // ProgressBar
 
 class App extends Component {
-  constructor () {
-    super()
-    this.state = {
-      firstCaption: {},
-      secondCaption: {}
-    }
+  state = {
+    title: 'Image Caption App',
+    firstCaption: {},
+    secondCaption: {}
+  }
 
-    this.getResponse = this.getResponse.bind(this)
+  getResponse = (obj) => {
+    this.setState({
+      firstCaption: obj.BestOutcome,
+      secondCaption: obj.RunnerUpOutcome
+    })
   }
-  getResponse (obj) {
-    this.setState({ firstCaption: obj.BestOutcome })
-    this.setState({ secondCaption: obj.RunnerUpOutcome })
-  }
-  componentDidMount () {
-  }
-  render () {
+
+  render() {
     return (
       <main className={styles.App}>
         <header>
-          <h1>Image Caption App</h1>
+          <h1>{this.state.title}</h1>
         </header>
 
         <ImageUploader getResponse={this.getResponse} />
