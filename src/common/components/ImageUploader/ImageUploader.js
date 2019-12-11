@@ -9,23 +9,16 @@ const apiClient = cloudmersiveImageApiClient.ApiClient.instance
 const Apikey = apiClient.authentications['Apikey']
 
 class ImageUploader extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      imagePreviewURL: '',
-      rawFile: ''
-    }
-
-    this.handleImageChange = this.handleImageChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.postImageToApi = this.postImageToApi.bind(this)
+  state = {
+    imagePreviewURL: '',
+    rawFile: ''
   }
-  postImageToApi () {
-    let currentComponent = this;
+
+  postImageToApi = () => {
     Apikey.apiKey = REACT_APP_API_KEY
     const api = new cloudmersiveImageApiClient.RecognizeApi()
-    const { rawFile } = currentComponent.state
-    const { getResponse } = currentComponent.props
+    const { rawFile } = this.state
+    const { getResponse } = this.props
 
     const callback = function (error, data, res) {
       if (error) {
@@ -38,11 +31,13 @@ class ImageUploader extends Component {
 
     api.recognizeDescribe(rawFile, callback)
   }
-  handleSubmit (e) {
+
+  handleSubmit = e => {
     e.preventDefault()
     this.postImageToApi()
   }
-  handleImageChange (e) {
+
+  handleImageChange = e => {
     e.preventDefault()
     let reader = new FileReader()
     let rawFile = e.target.files[0]
@@ -56,7 +51,8 @@ class ImageUploader extends Component {
 
     reader.readAsDataURL(rawFile)
   }
-  render () {
+
+  render() {
     let { imagePreviewURL } = this.state
     let $imagePreview
 
