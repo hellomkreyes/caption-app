@@ -26,18 +26,31 @@ class App extends Component {
   }
 
   render() {
+    const {
+      firstCaption,
+      secondCaption
+    } = this.state
     return (
       <main className={styles.App}>
         <header>
           <Heading level={1}>{this.state.title}</Heading>
         </header>
 
-        <div className='grid'>
+        <div className={styles['App-grid']}>
           <div className='column'>
-            <ImageUploader getResponse={this.getResponse} />
+            <div>
+              <h2>First Caption</h2>
+              <p>Confidence: {firstCaption.ConfidenceScore}</p>
+              <p>Caption:{firstCaption.Description}</p>
+            </div>
+            <div>
+              <h2>Second Caption</h2>
+              <p>Confidence: {secondCaption.ConfidenceScore}</p>
+              <p>Caption: {secondCaption.Description}</p>
+            </div>
           </div>
           <div className='column'>
-            
+            <ImageUploader getResponse={this.getResponse} />
           </div>
         </div>
 

@@ -73,6 +73,7 @@ class ImageUploader extends Component {
           <input type='file'
             id='imageFile'
             name='imageFile'
+            accept='image/png, image/jpeg'
             onChange={this.handleImageChange}
           />
           <Button type={'submit'}>Generate Caption!</Button>
