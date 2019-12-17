@@ -2,8 +2,9 @@
 
 import React, { Component } from 'react'
 
-import styles from './ImageUploader.module.scss'
 import { Button } from '../../components'
+
+import styles from './ImageUploader.module.scss'
 
 const { REACT_APP_API_KEY } = process.env
 const apiClient = cloudmersiveImageApiClient.ApiClient.instance

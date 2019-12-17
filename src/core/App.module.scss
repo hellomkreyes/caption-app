@@ -29,5 +29,9 @@
 
   &-column {
     flex: 1;
+
+    &:first-child {
+      text-align: left;
+    }
   }
 }

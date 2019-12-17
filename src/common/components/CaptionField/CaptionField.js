@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import { Button, Tooltip } from '../../components'
 
+import styles from './CaptionField.module.scss'
+
 export const CaptionField = ({ id, caption }) => {
   const [copySuccess, setCopySuccess] = useState('')
   const textAreaRef = useRef(null)
@@ -20,12 +22,12 @@ export const CaptionField = ({ id, caption }) => {
 
   return (
     <>
-      <label htmlFor={id}>
+      <label htmlFor={id} className={styles.captionField}>
         <span className="visually-hidden">Generated caption: {caption}</span>
         <textarea name=""
           id={id}
           cols="30"
-          rows="1"
+          rows="3"
           ref={textAreaRef}
           defaultValue={caption}
         />
