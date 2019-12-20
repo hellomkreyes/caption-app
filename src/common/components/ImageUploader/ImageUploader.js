@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 
 import styles from './ImageUploader.module.scss'
+import { Button } from '../../components'
 
 const { REACT_APP_API_KEY } = process.env
 const apiClient = cloudmersiveImageApiClient.ApiClient.instance
@@ -58,15 +59,24 @@ class ImageUploader extends Component {
 
     if (imagePreviewURL) {
       $imagePreview = (<div className={styles.imageContainer}>
-        <img src={imagePreviewURL} alt='' />
+        <img src={imagePreviewURL} 
+          alt='Preview of uploaded file' 
+          title='Preview of uploaded file'
+        />
       </div>)
     }
 
     return (
       <>
         <form onSubmit={this.handleSubmit}>
-          <input type='file' onChange={this.handleImageChange} />
-          <button type='submit' onClick={this.handleSubmit}>Generate Caption!</button>
+          <label htmlFor='imageFile'>File Upload</label>
+          <input type='file'
+            id='imageFile'
+            name='imageFile'
+            accept='image/png, image/jpeg'
+            onChange={this.handleImageChange}
+          />
+          <Button type={'submit'}>Generate Caption!</Button>
         </form>
 
         { $imagePreview }
