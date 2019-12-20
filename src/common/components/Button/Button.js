@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Button = ({ children, ...otherProps }) => (
-  <button {...otherProps}>{ children }</button>
+export const Button = ({ children, ...rest }) => (
+  <button {...rest}>{ children }</button>
 )
 
 Button.propTypes = {
