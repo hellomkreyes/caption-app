@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Heading = (props) => {
-  const level = props.level || 2
-  const HeadingTag = `h${level}`
+export const Heading = props => {
+  const HeadingTag = `h${props.level}`
   const id = props.id
   let className = props.appearance ? `t${props.appearance}` : ''
 
@@ -20,4 +19,8 @@ export const Heading = (props) => {
 
 Heading.propTypes = {
   children: PropTypes.string.isRequired
+}
+
+Heading.defaultProps = {
+  level: 2
 }
