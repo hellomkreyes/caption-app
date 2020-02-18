@@ -17,6 +17,7 @@ export const CaptionField = ({ id, caption }) => {
     textAreaRef.current.select()
     document.execCommand('copy')
     e.target.focus()
+    console.log(e.target)
     setCopySuccess('Copied!')
   }
 
