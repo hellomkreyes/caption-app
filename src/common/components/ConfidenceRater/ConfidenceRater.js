@@ -27,7 +27,7 @@ export const ConfidenceRater = ({ score }) => {
             <span className={styles.confidenceRater__emojis}
               role='img' 
               aria-label='Awesomeee. High confidence for caption accuracy.'>🤩💯 </span>
-            one hundo p! Definitely use this caption!</span>}
+            definitely use this caption!</span>}
         </p>
       </div>
     </>
