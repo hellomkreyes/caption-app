@@ -1,0 +1,11 @@
+@import '../../styles/variables.scss';
+
+.captionField {
+  textarea {
+    resize: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    border: solid 1px lighten($grey, 25%);
+  }
+}

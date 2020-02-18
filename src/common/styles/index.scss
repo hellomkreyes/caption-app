@@ -1,3 +1,10 @@
+@import './mixins.scss';
+@import './variables.scss';
+
+html {
+  background-image: url('/dot-grid.png')
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,9 +12,87 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: $serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  // color: $grey;
+  font-family: $sansSerif, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+a {
+  &:hover,
+  &:focus {
+    font-weight: 600;
+    background: $lavender;
+    box-shadow: inset 0 0.45em 0 #fff, inset 0 -0.15em 0 #fff;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+button, .button {
+  -webkit-appearance: none;
+  border: none;
+  transition: all .4s ease;
+  margin: 0;
+  padding: 15px 30px;
+  margin: 5px 0 15px;
+  display: inline-block;
+  border-radius: 200px;
+  font-size: 100%;
+  font-weight: 700;
+  font-family: 'system-ui', sans-serif;
+  cursor: pointer;
+  background-color: $lavender;
+  color: white;
+  outline: 0;
+  position: relative;
+  vertical-align: middle;
+  white-space: nowrap;
+  @include box-shadow($darkpurple);
+
+  &:hover,
+  &:focus {
+    @include hover-box-shadow($darkpurple);
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    @include box-shadow($darkpurple);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    background-color: darken($lavender, 5%);
+  }
+
+  & ~ button,
+  & ~ .button {
+    margin-left: 10px;
+  }
 }
