@@ -18,7 +18,7 @@ export const Heading = props => {
 }
 
 Heading.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired
 }
 
 Heading.defaultProps = {
