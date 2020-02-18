@@ -42,8 +42,14 @@ class App extends Component {
 
         <div className={styles['App-grid']}>
           <div className={styles['App-column']}>
-            <CaptionBlock title={'First Caption'} caption={firstCaption.Description} />
-            <CaptionBlock title={'Second Caption'} caption={secondCaption.Description}/>
+            <CaptionBlock title={'First Caption'}
+              caption={firstCaption.Description}
+              score={firstCaption.ConfidenceScore}
+            />
+            <CaptionBlock title={'Second Caption'}
+              caption={secondCaption.Description}
+              score={secondCaption.ConfidenceScore}
+            />
           </div>
 
           <div className={styles['App-column']}>

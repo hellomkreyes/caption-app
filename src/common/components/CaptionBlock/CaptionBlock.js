@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 import { Heading, CaptionField } from '../../components'
 
-export const CaptionBlock = ({ title, caption }) => {
+export const CaptionBlock = ({ title, caption, score }) => {
   return (
     <div>
       { title && <Heading level={2}>{ title }</Heading> }
-      <p>Confidence: { caption }</p>
+      <p>Confidence: { score }</p>
       <CaptionField caption={caption} />
     </div>
   )
