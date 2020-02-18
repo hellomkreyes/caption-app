@@ -49,6 +49,9 @@ class ImageUploader extends Component {
 
   handleImageChange = e => {
     e.preventDefault()
+    const {
+      hasImage
+    } = this.props
     let reader = new FileReader()
     let rawFile = e.target.files[0]
 
@@ -60,12 +63,18 @@ class ImageUploader extends Component {
         fileSize: `${this.convertBytes(rawFile.size)}`,
         rawFileSize: rawFile.size
       })
+
+      hasImage(true)
     }
 
     reader.readAsDataURL(rawFile)
   }
 
   handleReset = () => {
+    const {
+      reset,
+      hasImage
+    } = this.props
     const form = document.getElementById('imageForm')
     form.reset()
 
@@ -76,6 +85,10 @@ class ImageUploader extends Component {
       fileSize: '',
       rawFileSize: 0,
     })
+
+    // this needs to trigger a callback that clears state in the App
+    reset()
+    hasImage(false)
   }
 
   convertBytes = (bytes) => {

@@ -35,14 +35,22 @@
     }
   }
 
-  h1 {
+  &__title {
     margin: 0;
+  }
 
-    span {
-      display: block;
-      margin-top: -10px;
-      font-size: 34px;
-    }
+  &__subtitle {
+    display: block;
+    margin-top: -10px;
+    font-size: 34px;
+  }
+
+  &__description {
+    max-width: 1300px;
+    text-align: center;
+    margin: 20px auto;
+    width: 650px;
+    font-size: 18px;
   }
 
   header {
