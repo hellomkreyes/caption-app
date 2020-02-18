@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Heading, CaptionField } from '../../components'
+import { Heading, CaptionField, ConfidenceRater } from '../../components'
 
 export const CaptionBlock = ({ title, caption, score }) => {
   return (
     <div>
       { title && <Heading level={2}>{ title }</Heading> }
-      <p>Confidence: { score }</p>
+      <ConfidenceRater score={score} />
       <CaptionField caption={caption} />
     </div>
   )

@@ -1,4 +1,33 @@
-.imageUploader {}
+@import '../../styles/variables.scss';
+
+.imageUploader {
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__fileSize {
+    font-family: $sansSerif;
+    font-size: 28px;
+    margin: 0 15px;
+    letter-spacing: -2px;
+  }
+
+  &__errorMsg {
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 10px 0;
+    background: $red;
+    color: #FFF;
+    font-weight: 700;
+    border-radius: 5px;
+  }
+
+  &__reset {
+    margin: 5px 5px 15px;
+  }
+}
 
 .imageContainer {
   max-width: 1000px;
