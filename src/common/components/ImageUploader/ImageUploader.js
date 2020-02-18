@@ -12,8 +12,10 @@ const Apikey = apiClient.authentications['Apikey']
 
 class ImageUploader extends Component {
   state = {
+    uploadLabel: 'Upload an image!',
     imagePreviewURL: '',
-    rawFile: ''
+    rawFile: '',
+    hasImage: false
   }
 
   postImageToApi = () => {
@@ -47,7 +49,8 @@ class ImageUploader extends Component {
     reader.onloadend = () => {
       this.setState({
         rawFile,
-        imagePreviewURL: reader.result
+        imagePreviewURL: reader.result,
+        hasImage: true
       })
     }
 
@@ -55,7 +58,11 @@ class ImageUploader extends Component {
   }
 
   render() {
-    let { imagePreviewURL } = this.state
+    let {
+      imagePreviewURL,
+      uploadLabel,
+      hasImage
+    } = this.state
     let $imagePreview
 
     if (imagePreviewURL) {
@@ -70,14 +77,17 @@ class ImageUploader extends Component {
     return (
       <>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor='imageFile'>File Upload</label>
+          {!hasImage && <label htmlFor='imageFile' className={'button'}>{uploadLabel}</label>}
           <input type='file'
             id='imageFile'
             name='imageFile'
             accept='image/png, image/jpeg'
             onChange={this.handleImageChange}
+            className={'visually-hidden'}
           />
-          <Button type={'submit'}>Generate Caption!</Button>
+
+
+          {hasImage && <Button type={'submit'}>Generate Caption!</Button>}
         </form>
 
         { $imagePreview }

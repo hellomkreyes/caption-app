@@ -16,7 +16,8 @@ import ImageUploader from '../common/components/ImageUploader/ImageUploader'
 
 class App extends Component {
   state = {
-    title: 'Image Caption App',
+    title: 'Generate',
+    subtitle: 'Alt Text!',
     firstCaption: {},
     secondCaption: {}
   }
@@ -31,13 +32,15 @@ class App extends Component {
   render() {
     const {
       firstCaption,
-      secondCaption
+      secondCaption,
+      title,
+      subtitle
     } = this.state
 
     return (
       <main className={styles.App}>
         <header>
-          <Heading level={1}>{this.state.title}</Heading>
+          <Heading level={1}>{title} <span>{subtitle}</span></Heading>
         </header>
 
         <div className={styles['App-grid']}>
@@ -58,7 +61,7 @@ class App extends Component {
         </div>
 
         <footer>
-          <span>Created by M.K. Reyes | &copy; 2019</span>
+          <span>&copy; { new Date().getFullYear() } <a href="//hellomkreyes.com" target="_blank" rel="noopener noreferrer">M.K. Reyes</a></span>
         </footer>
       </main>
     )
