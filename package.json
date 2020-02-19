@@ -2,9 +2,11 @@
   "name": "caption-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hellomkreyes.github.io/caption-app",
   "dependencies": {
     "classnames": "^2.2.6",
     "cloudmersive-image-api-client": "^1.3.1",
+    "gh-pages": "^2.2.0",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -12,6 +14,8 @@
     "serialize-javascript": "^2.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
