@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/caption-app/static/css/main.26025d79.chunk.css",
+    "main.css": "/caption-app/static/css/main.a293527e.chunk.css",
     "main.js": "/caption-app/static/js/main.0e94b5ff.chunk.js",
     "main.js.map": "/caption-app/static/js/main.0e94b5ff.chunk.js.map",
     "runtime-main.js": "/caption-app/static/js/runtime-main.9900fd02.js",
@@ -8,14 +8,14 @@
     "static/js/2.ab86e501.chunk.js": "/caption-app/static/js/2.ab86e501.chunk.js",
     "static/js/2.ab86e501.chunk.js.map": "/caption-app/static/js/2.ab86e501.chunk.js.map",
     "index.html": "/caption-app/index.html",
-    "precache-manifest.dc72dd23403383243a2f7c1dd8614631.js": "/caption-app/precache-manifest.dc72dd23403383243a2f7c1dd8614631.js",
+    "precache-manifest.3ac937150d252bbe3295d16d34aff023.js": "/caption-app/precache-manifest.3ac937150d252bbe3295d16d34aff023.js",
     "service-worker.js": "/caption-app/service-worker.js",
-    "static/css/main.26025d79.chunk.css.map": "/caption-app/static/css/main.26025d79.chunk.css.map"
+    "static/css/main.a293527e.chunk.css.map": "/caption-app/static/css/main.a293527e.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.9900fd02.js",
     "static/js/2.ab86e501.chunk.js",
-    "static/css/main.26025d79.chunk.css",
+    "static/css/main.a293527e.chunk.css",
     "static/js/main.0e94b5ff.chunk.js"
   ]
 }
