@@ -7,7 +7,7 @@ export const ConfidenceRater = ({ score }) => {
   return (
     <>
       <div>
-        <p>{score && 'Confidence Score: '}
+        <p tabIndex={0}>{score && 'Confidence Score: '}
           {score <= 0.25 && <span>
             <span className={styles.confidenceRater__emojis}
               role='img' 

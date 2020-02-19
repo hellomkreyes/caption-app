@@ -59,6 +59,12 @@ class App extends Component {
 
         <div className={styles['App-grid']}>
           <div className={styles['App-column']}>
+            <ImageUploader hasImage={this.hasImage}
+              getResponse={this.getResponse} 
+              reset={this.resetState} />
+          </div>
+
+          <div className={styles['App-column']}>
             <CaptionBlock title={'First Caption'}
               caption={firstCaption.Description}
               score={firstCaption.ConfidenceScore}
@@ -67,12 +73,6 @@ class App extends Component {
               caption={secondCaption.Description}
               score={secondCaption.ConfidenceScore}
             />
-          </div>
-
-          <div className={styles['App-column']}>
-            <ImageUploader hasImage={this.hasImage}
-              getResponse={this.getResponse} 
-              reset={this.resetState} />
           </div>
         </div>
 
