@@ -78,7 +78,7 @@ class App extends Component {
         </div>
 
         <footer className={styles.App__footer}>
-          <span>&copy; { new Date().getFullYear() } <a href="//hellomkreyes.com" target="_blank" rel="noopener noreferrer">M.K. Reyes</a></span>
+          <span>&copy; { new Date().getFullYear() } <a href="http://hellomkreyes.com/" target="_blank" rel="noopener noreferrer">M.K. Reyes</a></span>
           <ul className={styles.App__socialList}>
             <li>
               <a href="//github.com/hellomkreyes" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile.">
