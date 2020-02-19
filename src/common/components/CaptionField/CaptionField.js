@@ -18,6 +18,10 @@ export const CaptionField = ({ id, caption }) => {
     document.execCommand('copy')
     e.target.focus()
     setCopySuccess('Copied!')
+
+    setTimeout(() => {
+      setCopySuccess('')
+    }, 1000)
   }
 
   return (
@@ -35,7 +39,7 @@ export const CaptionField = ({ id, caption }) => {
 
       { document.queryCommandSupported('copy') && <div>
         <Button onClick={copyToClipboard} disabled={!hasCaption(caption)}>Copy to clipboard</Button>
-        { copySuccess && <Tooltip>{copySuccess}</Tooltip> }
+        <Tooltip className={copySuccess ? 'fadein' : 'fadeout'}>Copied!</Tooltip>
       </div> }
     </>
   )
