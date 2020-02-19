@@ -19,7 +19,7 @@ class ImageUploader extends Component {
     fileSize: '',
     rawFileSize: 0,
     sizeLimit: 4000000,
-    errorMsg: 'Exceeds file size. Choose a smaller image 🙏~'
+    errorMsg: 'This image exceeds the max file size of 4MB. Please choose a smaller image 🙏~'
   }
 
   postImageToApi = () => {
@@ -126,7 +126,6 @@ class ImageUploader extends Component {
       <>
         <div className={styles.imageUploader__container}>
           <form id='imageForm' onSubmit={this.handleSubmit}>
-            {!hasImage && <label htmlFor='imageFile' className={'button'}>{uploadLabel}</label>}
             <input type='file'
               id='imageFile'
               name='imageFile'
@@ -134,16 +133,26 @@ class ImageUploader extends Component {
               onChange={this.handleImageChange}
               className={'visually-hidden'}
             />
+            {!hasImage && <label htmlFor='imageFile' className={'button'}>{uploadLabel}</label>}
 
-            {hasImage && rawFileSize <= sizeLimit && <Button type={'submit'}>Generate Caption!</Button>}
+            {hasImage && rawFileSize <= sizeLimit && <Button type={'submit'}>Generate <span className={'visually-hidden'}>your</span> Caption!</Button>}
 
-            {rawFileSize > sizeLimit && <span className={styles.imageUploader__fileSize}>{fileSize}</span>}
+            {rawFileSize > sizeLimit && <span className={styles.imageUploader__fileSize}
+              aria-label={`The file size of this image is ${fileSize}.`}
+            >{fileSize}</span>}
           </form>
 
-          {hasImage && <Button className={styles.imageUploader__reset} onClick={this.handleReset}>Reset!</Button>}
+          {hasImage && <Button className={styles.imageUploader__reset}
+            onClick={this.handleReset}
+            aria-label={'Reset the app to upload a different image.'}>
+            Reset!
+          </Button>}
         </div>
 
-        {rawFileSize > sizeLimit && <span className={styles.imageUploader__errorMsg}>{errorMsg}</span>}
+        {rawFileSize > sizeLimit && <span role={'alert'}
+          className={styles.imageUploader__errorMsg}
+          aria-live={'assertive'}
+        >{errorMsg}</span>}
 
         { $imagePreview }
       </>

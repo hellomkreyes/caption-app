@@ -51,7 +51,11 @@ a {
     text-decoration: none;
   }
 
-  &:visited {
+  &:focus {
+    outline: auto $lavender 4px;
+  }
+
+  &, &:visited, &:active {
     color: inherit;
   }
 }
@@ -77,11 +81,19 @@ button, .button {
   white-space: nowrap;
   @include box-shadow($darkpurple);
 
-  &:hover,
+  &:hover:not([disabled]),
   &:focus {
     @include hover-box-shadow($darkpurple);
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
+  }
+
+  &[disabled]:hover {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: dotted $lavender 4px;
   }
 
   &:active {
@@ -95,6 +107,20 @@ button, .button {
   & ~ .button {
     margin-left: 10px;
   }
+}
+
+p,
+textarea {
+  &:focus {
+    outline: $lavender auto 5px;
+  }
+}
+
+input[type=file]:focus + label.button {
+  @include hover-box-shadow($darkpurple);
+  -webkit-transform: translateY(-2px);
+  transform: translateY(-2px);
+  outline: dotted $lavender 4px;
 }
 
 .fadein {

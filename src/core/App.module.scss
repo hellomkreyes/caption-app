@@ -23,19 +23,20 @@
   &-grid {
     max-width: 1300px;
     padding: 0 40px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse;
 
     @media screen and (max-width: 750px) {
-      flex-direction: column-reverse;
+      flex-direction: column;
     }
   }
 
   &-column {
     flex: 1 1 100%;
 
-    &:first-child {
+    &:last-child {
       text-align: left;
 
       @media screen and (max-width: 750px) {
@@ -67,13 +68,35 @@
     }
   }
 
-  header {
-    margin: 30px 0;
+  &__fineprint {
+    font-size: 10px;
+  }
+
+  &__header {
+    max-width: 1300px;
+    margin: 30px auto;
     padding: 0 40px;
   }
 
-  footer {
-    margin-top: 30px;
+  &__footer {
+    max-width: 1300px;
+    margin: 20px auto;
     padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__socialList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+
+    li:not(:last-child) {
+      margin-right: 15px;
+    }
   }
 }

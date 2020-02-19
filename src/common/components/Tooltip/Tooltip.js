@@ -9,7 +9,11 @@ export const Tooltip = ({ children, ...rest }) => {
 
   return (
     <div className={tooltipClassName}>
-      <span className={styles['tooltip-text']}>{children}</span>
+      <span role={'alert'}
+        className={styles['tooltip-text']}
+        aria-live={'assertive'}
+        aria-label={'The generated caption has been copied to your clipboard.'}
+      >{children}</span>
     </div>
   )
 }

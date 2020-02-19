@@ -6,5 +6,5 @@ export const Button = ({ children, ...rest }) => (
 )
 
 Button.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired
 }
