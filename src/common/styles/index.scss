@@ -55,7 +55,7 @@ a {
     outline: auto $lavender 4px;
   }
 
-  &:visited {
+  &, &:visited, &:active {
     color: inherit;
   }
 }

@@ -52,9 +52,10 @@ class App extends Component {
 
     return (
       <main className={styles.App}>
-        <header>
+        <header className={styles.App__header}>
           <Heading level={1} className={styles.App__title}>{title} <span className={styles.App__subtitle}>{subtitle}</span></Heading>
           {!hasImage && <p className={styles.App__description}>Having writers block? Can't seem to come up with alt text for your image? Let 'Generate Alt Text!' do the work for you! This generator uses Cloudmersive's Image Descriptions and Captioning API, to generate a one sentence caption for any uploaded image.</p>}
+          <span className={styles.App__fineprint}>Powered by <a href="//api.cloudmersive.com/docs/image.asp" target="_blank" rel="noopener noreferrer">Cloudmersive's Image Processing API</a></span>
         </header>
 
         <div className={styles['App-grid']}>
@@ -76,8 +77,25 @@ class App extends Component {
           </div>
         </div>
 
-        <footer>
+        <footer className={styles.App__footer}>
           <span>&copy; { new Date().getFullYear() } <a href="//hellomkreyes.com" target="_blank" rel="noopener noreferrer">M.K. Reyes</a></span>
+          <ul className={styles.App__socialList}>
+            <li>
+              <a href="//github.com/hellomkreyes" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile.">
+                <i className="fab fa-github-alt"></i>
+              </a>
+            </li>
+            <li>
+              <a href="//www.linkedin.com/in/mkreyes/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile.">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+            <li>
+              <a href="//codepen.io/hellomkreyes" target="_blank" rel="noopener noreferrer" aria-label="Visit my codepen!">
+                <i className="fab fa-codepen"></i>
+              </a>
+            </li>
+          </ul>
         </footer>
       </main>
     )
